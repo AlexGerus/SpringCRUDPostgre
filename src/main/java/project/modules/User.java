@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "users_table", schema = "petshop")
+@Table(name = "users_table", schema = "pet_task")
 public class User implements Serializable {
     @Id
     @Column(name = "user_id")

@@ -8,7 +8,6 @@ import project.modules.Role;
 import project.modules.User;
 import project.service.RoleService;
 import project.service.UserService;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -34,7 +33,7 @@ public class SpringController {
         return "redirect:/list";
     }
 
-    @RequestMapping(value = "/removeUser/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteUser/{id}" , method = RequestMethod.GET)
     public String getDelete(@PathVariable("id") long id, Model model) {
         roleService.deleteRole(id);
         userService.deleteUser(id);
@@ -43,7 +42,7 @@ public class SpringController {
     }
 
     @RequestMapping(value = {"/","/list"} , method = RequestMethod.GET)
-    public String listUsers(Model model) throws IOException {
+    public String listUsers(Model model){
         List<User> list = userService.listUser();
         model.addAttribute("list", list);
         model.addAttribute("userAttribute", new User());
@@ -54,7 +53,7 @@ public class SpringController {
 
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editUser(@PathVariable("id") Long id, Model model ) {
+    public String editUser(@PathVariable("id") long id, Model model ) {
         model.addAttribute("changeUser", userService.getUser(id));
         return "list";
     }
@@ -71,6 +70,4 @@ public class SpringController {
         userService.changeUser(profile);
         return "redirect:/list";
     }
-
-
 }

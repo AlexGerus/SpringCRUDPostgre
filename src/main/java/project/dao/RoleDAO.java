@@ -4,10 +4,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import project.modules.Role;
 import project.modules.User;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Repository
 @Transactional
@@ -23,11 +21,6 @@ public class RoleDAO {
     public void addRole(User user, Role role) {
         role.setUser(user);
         em.persist(role);
-    }
-
-    @Transactional
-    public List<String> getRoles(String login) {
-        return em.createQuery("select role.roleName from Role role").getResultList();
     }
 
     @Transactional

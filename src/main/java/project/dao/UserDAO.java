@@ -11,7 +11,10 @@ public interface UserDAO {
     User getUser(long userId);
     long addUser(User user);
     void deleteUser(long userId);
+    void changeUser(User user);
+
     @Query("select user from User user")
     List<User> listUser();
-    void changeUser(User user);
+
+
 }
